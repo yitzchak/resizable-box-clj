@@ -1,0 +1,70 @@
+{
+  "name": "resizable-box-clj",
+  "version": "0.1.6",
+  "description": "A resizable box widget for Common Lisp Jupyter",
+  "keywords": [
+    "box",
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension",
+    "widgets"
+  ],
+  "files": [
+    "{js}/**/*.{js,ts,map}",
+    "css/*.css",
+    "LICENSE.md"
+  ],
+  "homepage": "https://github.com/yitzchak/resizable-box-clj",
+  "bugs": {
+    "url": "https://github.com/yitzchak/resizable-box-clj/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Tarn W. Burton",
+    "email": "twburton@gmail.com"
+  },
+  "main": "js/index.js",
+  "types": "./js/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yitzchak/resizable-box-clj"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lab-install": "yarn pack -f resizable-box-clj.tgz && jupyter-labextension install --no-build resizable-box-clj.tgz && sleep 5 && jupyter-lab build",
+    "lint": "eslint . --ext .ts --fix",
+    "lint-check": "eslint . --ext .ts",
+    "prepack": "yarn run build"
+  },
+  "dependencies": {
+    "@jupyter-widgets/base": "^3.0.0",
+    "@jupyter-widgets/controls": "^2.0.0"
+  },
+  "devDependencies": {
+    "@phosphor/application": "^1.7.3",
+    "@phosphor/widgets": "^1.9.3",
+    "@types/node": "^14.0.14",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "lint-staged": "^10.2.11",
+    "typescript": "^3.9.6"
+  },
+  "jupyterlab": {
+    "extension": "js/plugin"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint . --ext .ts --fix"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
