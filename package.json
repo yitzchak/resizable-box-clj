@@ -1,6 +1,6 @@
 {
   "name": "resizable-box-clj",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A resizable box widget for Common Lisp Jupyter",
   "keywords": [
     "box",

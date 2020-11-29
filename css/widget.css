@@ -12,3 +12,10 @@
 	color: gray;
 }
 
+.resizable-grid-box:fullscreen {
+  resize: none !important;
+}
+
+.resizable-grid-box:fullscreen > .full-screen-button {
+  display: none !important;
+}
