@@ -1,9 +1,11 @@
 (defpackage #:resizable-box
   (:use #:common-lisp)
   (:export
-   #:full-screen
-   #:enter-full-screen
-   #:resizable-grid-box
-   #:resizable-layout
-   #:resize))
+    #:enable-full-screen
+    #:enter-full-screen
+    #:exit-full-screen
+    #:full-screen
+    #:resizable-grid-box
+    #:resizable-layout
+    #:resize))
 

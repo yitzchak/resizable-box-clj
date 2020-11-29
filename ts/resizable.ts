@@ -52,6 +52,8 @@ export class ResizableGridBoxModel extends GridBoxModel {
     return {
       ...super.defaults(),
 
+      enable_full_screen: false,
+
       _model_name: 'ResizableGridBoxModel',
       _model_module: MODULE_NAME,
       _model_module_version: MODULE_VERSION,
@@ -66,11 +68,28 @@ export class ResizableGridBoxModel extends GridBoxModel {
 
 export class ResizableGridBoxView extends GridBoxView {
 
+  resize_observer: any;
+  full_screen_button: any;
+
   initialize(parameters: any): void {
     super.initialize(parameters);
 
     this.model.on('msg:custom', this.handle_custom_message.bind(this));
+    this.model.on('change:enable_full_screen', (event: any) => {
+      if (event.changed.enable_full_screen) {
+        this.full_screen_button.style.display = null;
+      } else {
+        this.full_screen_button.style.display = "none";
+      }
+    });
+
     document.addEventListener("fullscreenchange", this.on_fullscreenchange.bind(this));
+
+    this.resize_observer = new ResizeObserver(() => {
+      if (this.children_views) {
+        this.update_children();
+      }
+    });
   }
 
   on_fullscreenchange(event: any): void {
@@ -94,6 +113,17 @@ export class ResizableGridBoxView extends GridBoxView {
     super.render();
     this.displayed.then(() => {
       this.el.classList.add('resizable-grid-box');
+      this.full_screen_button = document.createElement('div');
+      this.full_screen_button.classList.add('full-screen-button', 'fa', 'fa-expand');
+      this.full_screen_button.setAttribute('title', 'Full Screen');
+      if (!this.model.get('enable_full_screen')) {
+        this.full_screen_button.style.display = "none";
+      }
+      this.el.appendChild(this.full_screen_button);
+      this.full_screen_button.addEventListener('click', (event: any) => {
+        this.el.requestFullscreen();
+      });
+      this.resize_observer.observe(this.el);
     });
   }
 

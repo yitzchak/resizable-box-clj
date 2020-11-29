@@ -21,7 +21,12 @@
 
 
 (defclass resizable-grid-box (jupyter-widgets:grid-box)
-  ((on-full-screen
+  ((enable-full-screen
+     :accessor enable-full-screen
+     :initarg :enable-full-screen
+     :initform nil
+     :trait :bool)
+   (on-full-screen
      :accessor widget-on-full-screen
      :initarg :on-full-screen
      :initform nil))
