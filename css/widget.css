@@ -1,5 +1,6 @@
 .resizable-grid-box {
   background-color: var(--jp-layout-color0);
+  position: sticky;
 }
 
 .resizable-grid-box > .full-screen-button {

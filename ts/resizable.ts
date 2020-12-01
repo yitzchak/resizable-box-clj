@@ -8,6 +8,8 @@ import {
   GridBoxView
 } from '@jupyter-widgets/controls';
 
+// @ts-ignore
+import 'fullscreen-polyfill';
 
 // Import the CSS
 import '../css/widget.css';
