@@ -37,7 +37,7 @@
     "prepack": "yarn run build"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^3.0.0",
+    "@jupyter-widgets/base": "^4.0.0",
     "@jupyter-widgets/controls": "^3.0.0",
     "fullscreen-polyfill": "^1.0.3"
   },
