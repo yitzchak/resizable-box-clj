@@ -47,16 +47,14 @@
 (defun enter-full-screen (instance)
   (check-type instance resizable-grid-box)
   (jupyter-widgets:send-custom instance
-                               (jupyter:json-new-obj
-                                 ("do" "enter_full_screen")))
+                               '(:object-plist "do" "enter_full_screen"))
   (values))
 
 
 (defun exit-full-screen (instance)
   (check-type instance resizable-grid-box)
   (jupyter-widgets:send-custom instance
-                               (jupyter:json-new-obj
-                                 ("do" "exit_full_screen")))
+                               '(:object-plist "do" "exit_full_screen"))
   (values))
 
 
@@ -66,8 +64,8 @@
 
 (defmethod on-custom-message ((w resizable-grid-box) content buffers)
   (declare (ignore buffers))
-  (if (equal (jupyter:json-getf content "event") "full_screen")
+  (if (equal (gethash "event" content) "full_screen")
     (dolist (handler (widget-on-full-screen w))
             ()
-      (funcall handler w (jupyter:json-getf content "state")))
+      (funcall handler w (gethash "state" content)))
     (call-next-method)))
