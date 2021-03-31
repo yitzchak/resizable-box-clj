@@ -17,8 +17,6 @@
     :%view-module +module-name+
     :%view-module-version +module-version+))
 
-(jupyter-widgets:register-widget resizable-layout)
-
 
 (defclass resizable-grid-box (jupyter-widgets:grid-box)
   ((enable-full-screen
@@ -40,8 +38,6 @@
     :%view-name "ResizableGridBoxView"
     :%view-module +module-name+
     :%view-module-version +module-version+))
-
-(jupyter-widgets:register-widget resizable-grid-box)
 
 
 (defun enter-full-screen (instance)
