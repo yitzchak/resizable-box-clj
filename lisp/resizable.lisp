@@ -1,13 +1,12 @@
 (in-package #:resizable-box)
 
 
-(defclass resizable-layout (jupyter-widgets:layout)
+(jupyter/widgets:defwidget resizable-layout (jupyter-widgets:layout)
   ((resize
      :accessor resize
      :initarg :resize
      :initform nil
      :trait :string))
-  (:metaclass jupyter-widgets:trait-metaclass)
   (:documentation "")
   (:default-initargs
     :%model-name "ResizableLayoutModel"
@@ -18,7 +17,7 @@
     :%view-module-version +module-version+))
 
 
-(defclass resizable-grid-box (jupyter-widgets:grid-box)
+(jupyter/widgets:defwidget resizable-grid-box (jupyter-widgets:grid-box)
   ((enable-full-screen
      :accessor enable-full-screen
      :initarg :enable-full-screen
@@ -28,7 +27,6 @@
      :accessor widget-on-full-screen
      :initarg :on-full-screen
      :initform nil))
-  (:metaclass jupyter-widgets:trait-metaclass)
   (:documentation "")
   (:default-initargs
     :layout (make-instance 'resizable-layout)
