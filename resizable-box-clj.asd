@@ -11,5 +11,4 @@
       :components
         ((:file "packages")
          (:file "version")
-         (:file "resizable")
-         (:file "register-widgets")))))
+         (:file "resizable")))))
