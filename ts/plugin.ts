@@ -1,6 +1,6 @@
-import { Application, IPlugin } from '@phosphor/application';
+import { Application, IPlugin } from '@lumino/application';
 
-import { Widget } from '@phosphor/widgets';
+import { Widget } from '@lumino/widgets';
 
 import { IJupyterWidgetRegistry } from '@jupyter-widgets/base';
 
@@ -30,7 +30,7 @@ function activateWidgetExtension(
 
     exports: async (): Promise<any> => {
       return {
-        ...await import(/* webpackChunkName: "resizable-box-clj" */ './resizable')
+        ...await import('./resizable')
       }
     }
   });
